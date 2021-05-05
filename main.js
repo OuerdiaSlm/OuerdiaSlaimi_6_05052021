@@ -52,17 +52,14 @@ fetch ("JsonFile.json").then(response=>response.json())
         for (let j=0; j<data.photographers[i].tags.length; j++) {
             const tage = document.createElement("h3");
             attribution(divTags,tage,"#"+data.photographers[i].tags[j]);
-
-            
             
         }
 
         
-        
-    
-   
 
-    
+
+
+        //...........Envoie dans le local storage (deuxieme page)...................//
     }
     
     
@@ -73,52 +70,3 @@ function attribution (parent,enfant,data){
     parent.appendChild(enfant);
             enfant.textContent=data;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-fetch ("JsonFile.json").then(response=>response.json())
-.then(data=>{
-    const photographe = document.getElementById("photographe");
-    for (let i=0; i<data.photographers.length; i++){
-        const creaFigure = document.createElement("figure");
-        photographe.appendChild(creaFigure);
-
-        
-    }
-})
-
-function attribution (parent,enfant,data){
-    parent.appendChild(enfant);
-            enfant.textContent=data;
-    }
-
-function attribution(x,n,b){
-    this.name;
-    this
-}
