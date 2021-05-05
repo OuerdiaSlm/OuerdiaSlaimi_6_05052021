@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin-left: 6%;
+    margin-right: 6%;
+    font-family: DM Sans;
+}
+
+.top {
+    margin: auto;
+    width: 300px;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #D3573C;
+}
+
+.header_navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    color: #901C1C;
+}
+.main-navbar a  {
+    margin-top: 10px;
+    border: solid 1px #C4C4C4;
+    border-radius:  25px;
+    padding: 4px;
+    margin: 10px;
+}
+
+.main-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.navbar-photographe {
+    padding: 10px;
+}
+
+.logo {
+    width: 250px;
+    height: auto;
+}
+
+a:link 
+{ 
+ text-decoration:none; 
+ color: #901C1C;
+ font-weight: bolder;
+
+} 
+
+#photographe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+figure {
+    
+    margin: 40px;
+    text-align: center;
+}
+
+section img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+h2:not(.navbar-photographe) {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    color: #D3573C;
+}
+
+h4{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    color: #901C1C;
+    display: inline;
+    margin-bottom: 3px;
+}
+
+p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    margin-bottom: 3px;
+}
+
+h5{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 9px;
+    color: #757575;
+    margin-bottom: 3px;
+}
+
+h3{
+    font-style: normal;
+    font-size: 12px;
+    color: #901C1C;
+    border: solid 1px #C4C4C4;
+    border-radius: 25px;
+    display: inline;
+    margin: 3px;
+    padding: 3px;
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 550px) {
+    .top {
+        display: none;
+    }
+
+
+    .navbar-photographe {
+        position: absolute;
+        margin-left: -170px;
+        left: 100%;
+        top: 10px;
+        font-size: 13px;
+    }
+
+    .header_navbar {
+        justify-content: start;
+    }
+}    
