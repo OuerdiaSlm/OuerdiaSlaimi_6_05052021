@@ -55,18 +55,51 @@ fetch ("JsonFile.json").then(response=>response.json())
             
         }
 
-        
+        lien.addEventListener("click",function(){
+            let tab=[];
+            // Boucle parcour des images des photographes
+            for(let j=0; j<data.media.length; j++){
+                if (data.media[j].photographerId==data.photographers[i].id) {
+                    
+                    if ( data.media[j].image){
+                        tab.push({
+                            type:"image",
+                            src: data.media[j].image
+                          });
+                    } else {
+                        tab.push({
+                            type:"video",
+                            src: data.media[j].video
+                        });
+                    }
+                }
+            }
+            console.log(tab);
 
 
+            // Objet donnes photographe
+            let photographeObjet = {
+                name: data.photographers[i].name,
+                id: data.photographers[i].id,
+                city: data.photographers[i].city,
+                country: data.photographers[i].country,
+                tags: data.photographers[i].tags,
+                tagline: data.photographers[i].tagline,
+                portrait: data.photographers[i].portrait,
 
-        //...........Envoie dans le local storage (deuxieme page)...................//
-    }
+                media:tab
+            }
+
+            //...........Envoie dans le local storage (deuxieme page)...................//
+            localStorage.setItem("photographe",JSON.stringify(photographeObjet));
+            //let test= JSON.parse(localStorage.getItem("photographe"));
+        }
+        )}
+
+
     
     
 })
 
 
-function attribution (parent,enfant,data){
-    parent.appendChild(enfant);
-            enfant.textContent=data;
-    }
+
