@@ -17,10 +17,14 @@ fetch ("JsonFile.json").then(response=>response.json())
         creaFigure.appendChild(lien)
         lien.href="photographer-page.html?"+data.photographers[i].id;
         
-
         const image = document.createElement("img");
         lien.appendChild(image)
         image.src="Sample Photos/Photographers ID Photos/"+data.photographers[i].portrait;
+
+        //Création id pour img du profile
+        const attributeProfilImage = document.createAttribute('id')
+        attributeProfilImage.value = "imageProfile"
+        image.setAttributeNode(attributeProfilImage);
 
         //Récupération et intégration dans le DOM du nom & prénom
         const nom = document.createElement("h2");
@@ -52,7 +56,6 @@ fetch ("JsonFile.json").then(response=>response.json())
         for (let j=0; j<data.photographers[i].tags.length; j++) {
             const tage = document.createElement("h3");
             attribution(divTags,tage,"#"+data.photographers[i].tags[j]);
-            
         }
 
         lien.addEventListener("click",function(){
