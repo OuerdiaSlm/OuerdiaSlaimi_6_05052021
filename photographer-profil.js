@@ -3,10 +3,23 @@ let photographeData= JSON.parse(localStorage.getItem("photographe"));
 console.log(photographeData);
 const photographeProfil = document.getElementById("photographerProfil");
 
-let carte1= new CartePhotographe(photographeData[0].name,photographeData[0].id,photographeData[0].city,photographeData[0].country,photographeData[0].tags,photographeData[0].tagline,photographeData[0].portrait )
-        console.log(carte1);
+let carte1= new CartePhotographeFactory(photographeData[0].name,photographeData[0].id,photographeData[0].city,photographeData[0].country,photographeData[0].tags,photographeData[0].tagline,photographeData[0].portrait )
+        console.log(photographeData);
 carte1.html();
         
+// Fermeture de la modal
+let close= document.getElementById("close");
+close.addEventListener("click", function(){
+    let diaporama = document.getElementById("diapo");
+    diaporama.style.display = "none"; 
+})
+
+let prev=document.getElementById("prev");
+let next=document.getElementById("next");
+
+
+
+
 
 //creation div
 const creaDiv = document.createElement("div");
@@ -20,6 +33,62 @@ photographeProfil.appendChild(creaDiv);
             let imagePhotographe = document.createElement("img");
             creaDiv.appendChild(imagePhotographe);
             imagePhotographe.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
+
+            // click image pour faire apparaitre le diapo
+            imagePhotographe.addEventListener("click",function(){
+               let diaporama = document.getElementById("diapo");
+               diaporama.style.display = "block";
+
+               // Recuperation des images
+               let imgDiaporama=document.getElementById("imgDiapo");
+               imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
+
+                // button next et prev
+                let x=i;
+                next.addEventListener("click",function(){
+                if(x<photographeData.length-1){
+                    x=x+1
+                    
+                    if (photographeData[x].type=="image"){
+                        console.log("ok");
+                        imgDiaporama.style.display="inline";
+                        vidDiaporama.style.display="none";
+                        imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                        let vidDiaporama=document.getElementById("vidDiapo");
+                        vidDiaporama.src="";
+                    } else {
+                        let vidDiaporama=document.getElementById("vidDiapo");
+                        vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                        imgDiaporama.src="";
+                        vidDiaporama.style.display="block";
+                        imgDiaporama.style.display="none";
+                        vidDiaporama.type="video/mp4";
+                        vidDiaporama.controls="true";
+                        vidDiaporama.autoplay="true";
+                    }
+                    
+                    }
+                })
+                prev.addEventListener("click",function(){
+                    if(x>1){
+                        x=x-1
+                        let vidDiaporama=document.getElementById("vidDiapo");
+                        if (photographeData[x].type=="image"){
+                            imgDiaporama.style.display="inline";
+                            vidDiaporama.style.display="none";
+                            imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                        } else {
+                            vidDiaporama.style.display="block";
+                            imgDiaporama.style.display="none";
+                            vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                            vidDiaporama.type="video/mp4";
+                            vidDiaporama.controls="true";
+                            vidDiaporama.autoplay="true";
+                        }
+                    }
+                })
+
+            })
         } else {
             let videoPhotographe = document.createElement("video");
             let sourcePhotographe = document.createElement("source");
@@ -29,7 +98,20 @@ photographeProfil.appendChild(creaDiv);
             sourcePhotographe.type="video/mp4";
             videoPhotographe.controls="true";
             videoPhotographe.autoplay="true";
+            // click video pour faire apparaitre le diapo
+            videoPhotographe.addEventListener("click",function(){
+                let diaporama = document.getElementById("diapo");
+                diaporama.style.display = "block";
+                let vidDiaporama=document.getElementById("vidDiapo");
+                vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
+
+                vidDiaporama.type="video/mp4";
+                vidDiaporama.controls="true";
+                vidDiaporama.autoplay="true";
+             })
+            
         }
+
 
     }
     

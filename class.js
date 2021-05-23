@@ -1,6 +1,6 @@
 const photographe = document.getElementById("photographe");
 
-    class CartePhotographe {
+    class CartePhotographeFactory {
         constructor(name,id,city,country,tags,tagline,portrait){
             this.name=name;
             this.id=id;
@@ -64,5 +64,22 @@ const photographe = document.getElementById("photographe");
             }
         }
         
-        
+    }
+
+    class ImageFactory {
+        constructor(id, fileName, photographerId, likes) {
+            this.id=id;
+            this.fileName=fileName;
+            this.photographerId=photographerId;
+            this.likes=likes;
+        }
+    }
+
+    class VideoFactory {
+        constructor(id, fileName, photographerId, likes) {
+            this.id=id;
+            this.fileName=fileName;
+            this.photographerId=photographerId;
+            this.likes=likes;
+        }
     }

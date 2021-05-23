@@ -8,7 +8,7 @@ fetch ("JsonFile.json").then(response=>response.json())
     //Boucle: création de toutes les cartes photographe.
     for (let i=0; i<data.photographers.length; i++){
 
-        let carte= new CartePhotographe(data.photographers[i].name,data.photographers[i].id,data.photographers[i].city,data.photographers[i].country,data.photographers[i].tags,data.photographers[i].tagline,data.photographers[i].portrait )
+        let carte= new CartePhotographeFactory(data.photographers[i].name,data.photographers[i].id,data.photographers[i].city,data.photographers[i].country,data.photographers[i].tags,data.photographers[i].tagline,data.photographers[i].portrait )
         carte.html();
 
         console.log(data.photographers[i].name);
