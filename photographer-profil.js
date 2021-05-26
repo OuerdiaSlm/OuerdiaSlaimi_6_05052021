@@ -30,12 +30,14 @@ photographeProfil.appendChild(creaDiv);
         console.log(photographeData[i]); 
         if (photographeData[i].type == "image"){
             console.log(photographeData[i].type);
-            let imagePhotographe = document.createElement("img");
-            creaDiv.appendChild(imagePhotographe);
-            imagePhotographe.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
+            
+
+           //New ImageFcatory
+           let creaImage= new ImageFactory(photographeData[i].src, photographeData[0].name, creaDiv);
+           
 
             // click image pour faire apparaitre le diapo
-            imagePhotographe.addEventListener("click",function(){
+            creaImage.createMedia().addEventListener("click",function(){
                let diaporama = document.getElementById("diapo");
                diaporama.style.display = "block";
 
@@ -90,16 +92,11 @@ photographeProfil.appendChild(creaDiv);
 
             })
         } else {
-            let videoPhotographe = document.createElement("video");
-            let sourcePhotographe = document.createElement("source");
-            creaDiv.appendChild(videoPhotographe);
-            videoPhotographe.appendChild(sourcePhotographe);
-            sourcePhotographe.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
-            sourcePhotographe.type="video/mp4";
-            videoPhotographe.controls="true";
-            videoPhotographe.autoplay="true";
+           //New ImageFcatory
+           // let creavideo= new VideoFactory(photographeData[i].src, photographeData[0].name, creaDiv).createMedia();
+            
             // click video pour faire apparaitre le diapo
-            videoPhotographe.addEventListener("click",function(){
+            creavideo.addEventListener("click",function(){
                 let diaporama = document.getElementById("diapo");
                 diaporama.style.display = "block";
                 let vidDiaporama=document.getElementById("vidDiapo");
@@ -108,7 +105,63 @@ photographeProfil.appendChild(creaDiv);
                 vidDiaporama.type="video/mp4";
                 vidDiaporama.controls="true";
                 vidDiaporama.autoplay="true";
+
+                // click image pour faire apparaitre le diapo
+            creaImage.createMedia().addEventListener("click",function(){
+                let diaporama = document.getElementById("diapo");
+                diaporama.style.display = "block";
+ 
+                // Recuperation des images
+                let imgDiaporama=document.getElementById("imgDiapo");
+                imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
+ 
+                 // button next et prev
+                 let x=i;
+                 next.addEventListener("click",function(){
+                 if(x<photographeData.length-1){
+                     x=x+1
+                     
+                     if (photographeData[x].type=="image"){
+                         console.log("ok");
+                         imgDiaporama.style.display="inline";
+                         vidDiaporama.style.display="none";
+                         imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                         let vidDiaporama=document.getElementById("vidDiapo");
+                         vidDiaporama.src="";
+                     } else {
+                         let vidDiaporama=document.getElementById("vidDiapo");
+                         vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                         imgDiaporama.src="";
+                         vidDiaporama.style.display="block";
+                         imgDiaporama.style.display="none";
+                         vidDiaporama.type="video/mp4";
+                         vidDiaporama.controls="true";
+                         vidDiaporama.autoplay="true";
+                     }
+                     
+                     }
+                 })
+                 prev.addEventListener("click",function(){
+                     if(x>1){
+                         x=x-1
+                         let vidDiaporama=document.getElementById("vidDiapo");
+                         if (photographeData[x].type=="image"){
+                             imgDiaporama.style.display="inline";
+                             vidDiaporama.style.display="none";
+                             imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                         } else {
+                             vidDiaporama.style.display="block";
+                             imgDiaporama.style.display="none";
+                             vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                             vidDiaporama.type="video/mp4";
+                             vidDiaporama.controls="true";
+                             vidDiaporama.autoplay="true";
+                         }
+                     }
+                 })
              })
+
+
             
         }
 

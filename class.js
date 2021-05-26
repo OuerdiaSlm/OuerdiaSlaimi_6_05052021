@@ -64,22 +64,47 @@ const photographe = document.getElementById("photographe");
             }
         }
         
-    }
+    } 
 
     class ImageFactory {
-        constructor(id, fileName, photographerId, likes) {
+        constructor(src, name, parent, id, photographerId, likes) {
             this.id=id;
-            this.fileName=fileName;
+            this.src=src;
+            this.name=name;
+            this.parent=parent;
             this.photographerId=photographerId;
             this.likes=likes;
+        }
+        createMedia() {
+            let imagePhotographe = document.createElement("img");
+            creaDiv.appendChild(imagePhotographe);
+            imagePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
+            return imagePhotographe;
         }
     }
 
     class VideoFactory {
-        constructor(id, fileName, photographerId, likes) {
+        constructor(src, name, parent, id, photographerId, likes) {
             this.id=id;
-            this.fileName=fileName;
+            this.src=src;
+            this.name=name;
+            this.parent=parent;
             this.photographerId=photographerId;
             this.likes=likes;
+        }
+        createMedia() {
+            
+            let videoPhotographe = document.createElement("video"); 
+            let sourcePhotographe = document.createElement("source");
+            creaDiv.appendChild(videoPhotographe);
+            videoPhotographe.appendChild(sourcePhotographe);
+
+            sourcePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
+            sourcePhotographe.type="video/mp4";
+            videoPhotographe.controls="true";
+            videoPhotographe.autoplay="true";
+
+            return videoPhotographe, sourcePhotographe;
+            
         }
     }

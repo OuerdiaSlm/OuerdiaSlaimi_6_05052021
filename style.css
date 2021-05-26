@@ -155,8 +155,8 @@ video {
 }
 
 #imgDiapo {
-    width: 800px;
-    height: 600px;
+    width: 200px;
+    height: 100px;
     object-fit: cover;
     margin: auto;
     left: 0;
