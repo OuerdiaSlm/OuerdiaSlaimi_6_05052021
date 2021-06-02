@@ -1,7 +1,7 @@
 const photographe = document.getElementById("photographe");
 
     class CartePhotographeFactory {
-        constructor(name,id,city,country,tags,tagline,portrait){
+        constructor(name,id,city,country,tags,tagline,portrait, price){
             this.name=name;
             this.id=id;
             this.city=city;
@@ -9,6 +9,7 @@ const photographe = document.getElementById("photographe");
             this.tags=tags;
             this.tagline=tagline;
             this.portrait=portrait;
+            this.price=price;
         }  
 
         html(){

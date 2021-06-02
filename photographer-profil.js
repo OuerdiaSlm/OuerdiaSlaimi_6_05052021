@@ -3,7 +3,7 @@ let photographeData= JSON.parse(localStorage.getItem("photographe"));
 console.log(photographeData);
 const photographeProfil = document.getElementById("photographerProfil");
 
-let carte1= new CartePhotographeFactory(photographeData[0].name,photographeData[0].id,photographeData[0].city,photographeData[0].country,photographeData[0].tags,photographeData[0].tagline,photographeData[0].portrait )
+let carte1= new CartePhotographeFactory(photographeData[0].name,photographeData[0].id,photographeData[0].city,photographeData[0].country,photographeData[0].tags,photographeData[0].tagline,photographeData[0].portrait, photographeData[0].price)
         console.log(photographeData);
 carte1.html();
         
@@ -50,13 +50,13 @@ photographeProfil.appendChild(creaDiv);
                 next.addEventListener("click",function(){
                 if(x<photographeData.length-1){
                     x=x+1
-                    
+                    let vidDiaporama=document.getElementById("vidDiapo");
                     if (photographeData[x].type=="image"){
                         console.log("ok");
                         imgDiaporama.style.display="inline";
                         vidDiaporama.style.display="none";
                         imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                        let vidDiaporama=document.getElementById("vidDiapo");
+                      
                         vidDiaporama.src="";
                     } else {
                         let vidDiaporama=document.getElementById("vidDiapo");
@@ -93,7 +93,7 @@ photographeProfil.appendChild(creaDiv);
             })
         } else {
            //New ImageFcatory
-           // let creavideo= new VideoFactory(photographeData[i].src, photographeData[0].name, creaDiv).createMedia();
+            let creavideo= new VideoFactory(photographeData[i].src, photographeData[0].name, creaDiv).createMedia();
             
             // click video pour faire apparaitre le diapo
             creavideo.addEventListener("click",function(){
@@ -107,7 +107,7 @@ photographeProfil.appendChild(creaDiv);
                 vidDiaporama.autoplay="true";
 
                 // click image pour faire apparaitre le diapo
-            creaImage.createMedia().addEventListener("click",function(){
+                creaImage.createMedia().addEventListener("click",function(){
                 let diaporama = document.getElementById("diapo");
                 diaporama.style.display = "block";
  
@@ -163,11 +163,11 @@ photographeProfil.appendChild(creaDiv);
 
 
             
-        }
+        })
 
 
     }
     
     
     
-
+    }
