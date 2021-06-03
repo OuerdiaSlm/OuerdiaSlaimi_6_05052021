@@ -5,6 +5,8 @@
     <title>photographer-page</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="modale.css" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
   </head>
@@ -20,6 +22,96 @@
       <section id="photographe">
         
       </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="bground">
+        <div class="content">
+          <span class="close"></span>
+          <div class="modal-body">
+            <p>Contactez-moi</p>
+            <p id="formName"></p>
+            <form
+              name="reserve"
+              action="photographer-page.html"
+              method="get"
+              id="form">
+              <div 
+                class="formData">
+                <label for="first">Prénom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                /><br>
+                <span class="error" id="errorFirst"></span>
+              </div>
+              <div
+                class="formData">
+                <label>Nom</label><br>
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                /><br>
+                <span class="error" id="errorLast"></span>
+              </div>
+              <div
+                class="formData">
+                <label>E-mail</label><br>
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="exemple@domaine.com"
+                /><br>
+                <span class="error" id="errorEmail"></span>
+              </div>
+
+              <div
+                class="formData">
+                <label for="msg">Votre message</label><br>
+                <textarea id="msg" name="msg"></textarea>
+                <span class="error" id="errorMsg"></span>
+              </div>
+             
+              <input id="connexion"
+                class="btn-submit,button"
+                type="submit"
+                value="Envoyer"
+              />
+            </form>
+
+            <div id="validation">Merci! votre message à été envoyé.</div>
+            
+          </div>
+        </div>
+
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
 
       <section id="photographerProfil">
         
@@ -45,6 +137,7 @@
     <script src="class.js"></script>
     <script src="fonction.js"></script>
     <script src="photographer-profil.js"></script>
+    <script src="formulaire.js"></script>
     
 
 

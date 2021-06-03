@@ -16,9 +16,13 @@ const photographe = document.getElementById("photographe");
             const creaFigure = document.createElement("figure");
             photographe.appendChild(creaFigure);
 
+            // Div img
+
+            const divImg= document.createElement("div")
+            creaFigure.appendChild(divImg)
             //Lien + img
             const lien = document.createElement("a")
-            creaFigure.appendChild(lien)
+            divImg.appendChild(lien)
             lien.href="photographer-page.html?"+this.id;
             lien.id=this.id;
 
@@ -32,32 +36,36 @@ const photographe = document.getElementById("photographe");
             attributeProfilImage.value = "imageProfile"
             image.setAttributeNode(attributeProfilImage);
 
+            //DIV pour les infos du DOM
+            const divInfoDom = document.createElement("div")
+            creaFigure.appendChild(divInfoDom)
+
             //Récupération et intégration dans le DOM du nom & prénom
             const nom = document.createElement("h2");
-            attribution(creaFigure,nom,this.name);
+            attribution(divInfoDom,nom,this.name);
             
             //Récupération et intégration dans le DOM de la ville
             const ville = document.createElement("h4");
-            attribution(creaFigure,ville,this.city+", ");
+            attribution(divInfoDom,ville,this.city+", ");
 
             //Récupération et intégration dans le DOM du pays
             const pays = document.createElement("h4");
-            attribution(creaFigure,pays,this.country);
+            attribution(divInfoDom,pays,this.country);
 
 
             //Récupération et intégration dans le DOM du slogan
             const slogan = document.createElement("p");
-            attribution(creaFigure,slogan,this.tagline);
+            attribution(divInfoDom,slogan,this.tagline);
 
 
             //Récupération et intégration dans le DOM  du prix
             const prix = document.createElement("h5");
-            attribution(creaFigure,prix,this.price+"€/jour");
+            attribution(divInfoDom,prix,this.price+"€/jour");
 
 
             //Récupération et intégration dans le DOM des tags un par un
             const divTags = document.createElement("div");
-            creaFigure.appendChild(divTags);
+            divInfoDom.appendChild(divTags);
 
             for (let j=0; j<this.tags.length; j++) {
                 const tage = document.createElement("h3");
@@ -66,6 +74,30 @@ const photographe = document.getElementById("photographe");
         }
         
     } 
+
+    class MediaFactory {
+        constructor(type, src, name, div){
+            this.type=type;
+            this.src=src;
+            this.name=name;
+            this.div=div;
+        }
+            detecte(){
+                if (this.type=="image") {
+                    console.log(this.name);
+                    let typeMedia= new ImageFactory(this.src, this.name, this.div);
+                    
+                     return typeMedia.createMedia();
+                } else {
+                    console.log(this.type+"ceci est une vidéo");
+                    let typeMedia= new VideoFactory(this.src, this.name, this.div);
+                    
+                     return typeMedia.createMedia();
+                }
+            }
+
+            
+    }
 
     class ImageFactory {
         constructor(src, name, parent, id, photographerId, likes) {
