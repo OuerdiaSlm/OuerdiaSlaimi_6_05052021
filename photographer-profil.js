@@ -3,7 +3,7 @@ console.log(photographeData);
 const photographeProfil = document.getElementById("photographerProfil");
 
 let carte1= new CartePhotographeFactory(photographeData[0].name,photographeData[0].id,photographeData[0].city,photographeData[0].country,photographeData[0].tags,photographeData[0].tagline,photographeData[0].portrait, photographeData[0].price)
-        console.log(photographeData);
+        console.log(photographeData[1]);
 carte1.html();
 
 
@@ -19,9 +19,6 @@ parentImg.id="figureImgP2";
 console.log(parentImg.childNodes[1]);
 let divInfosP2=parentImg.childNodes[1];
 divInfosP2.id="idInfosP2";
-//const classFigure=document.createAttribute("class");
-//classFigure.value="sa veut ps bn dm1 va te reposer <3"
-//console.log(secondChild);
 
 const buttonContact= document.createElement("div");
 parentImg.insertBefore(buttonContact, secondChild);
@@ -31,15 +28,47 @@ buttonContact.textContent="Contactez-moi"
 
 
         
-// Fermeture de la modal
+// Fermeture de la modal............................
 let close= document.getElementById("close");
 close.addEventListener("click", function(){
     let diaporama = document.getElementById("diapo");
     diaporama.style.display = "none"; 
 })
+//...................................................
+
+// RACOURCI CLAVIER ESCAPE...........................
+window.addEventListener("keydown", function(eventEscape){
+    if (eventEscape.key=="Escape") {
+        // Fermeture de la modal
+        let close= document.getElementById("close");
+            let diaporama = document.getElementById("diapo");
+            diaporama.style.display = "none"; 
+    }
+})
+//....................................................
 
 let prev=document.getElementById("prev");
 let next=document.getElementById("next");
+
+
+//....................MENU TRIER PAR...................
+
+let selectMenu = document.getElementById("menuDeroulant");
+
+//onchange= detecte les changement(sa remplace le click)
+selectMenu.onchange = (event) => {
+    let inputText = event.target.value; //target il cible
+    console.log(inputText);
+}
+
+//......................................................
+
+
+
+
+
+
+
 
 
 
@@ -48,13 +77,14 @@ let next=document.getElementById("next");
 //creation div
 const creaDiv = document.createElement("div");
 photographeProfil.appendChild(creaDiv);
+creaDiv.id="idCreaDiv";
 
     //Récuperation de toutes les images
     for (let i =1; i<photographeData.length; i++){
         //console.log(photographeData[i]); 
        
-        let mediaUse=  new MediaFactory( photographeData[i].type, photographeData[i].src, photographeData[0].name, creaDiv).detecte();
-        
+        let mediaUse=  new MediaFactory( photographeData[i].type, photographeData[i].src, photographeData[0].name, creaDiv, photographeData[i].description, photographeData[i].likes).detecte();
+        //console.log(photographeData[i].description+"DDDEESSSSSS")
 //.....................................DIAPO........................................//
 
             // click image pour faire apparaitre le diapo
@@ -112,6 +142,9 @@ photographeProfil.appendChild(creaDiv);
                         }
                     }
                 })
+
+               
+
 
                 // Racourci CLAVIER
                window.addEventListener("keydown", function(event) {

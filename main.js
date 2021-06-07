@@ -28,12 +28,18 @@ fetch ("JsonFile.json").then(response=>response.json())
                     if ( data.media[j].image){
                         tab.push({
                             type:"image",
-                            src: data.media[j].image
+                            src: data.media[j].image,
+                            description: data.media[j].description,
+                            likes: data.media[j].likes
+                            
                           });
                     } else {
                         tab.push({
                             type:"video",
-                            src: data.media[j].video
+                            src: data.media[j].video,
+                            description: data.media[j].description,
+                            likes: data.media[j].likes
+                            
                         });
                     }
                 }

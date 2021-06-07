@@ -76,21 +76,23 @@ const photographe = document.getElementById("photographe");
     } 
 
     class MediaFactory {
-        constructor(type, src, name, div){
+        constructor(type, src, name, div, description, likes){
             this.type=type;
             this.src=src;
             this.name=name;
             this.div=div;
+            this.likes=likes;
+            this.description=description;
         }
             detecte(){
                 if (this.type=="image") {
                     console.log(this.name);
-                    let typeMedia= new ImageFactory(this.src, this.name, this.div);
+                    let typeMedia= new ImageFactory(this.src, this.name, this.div, this.description, this.likes);
                     
                      return typeMedia.createMedia();
                 } else {
                     console.log(this.type+"ceci est une vidéo");
-                    let typeMedia= new VideoFactory(this.src, this.name, this.div);
+                    let typeMedia= new VideoFactory(this.src, this.name, this.div, this.description, this.likes);
                     
                      return typeMedia.createMedia();
                 }
@@ -100,42 +102,79 @@ const photographe = document.getElementById("photographe");
     }
 
     class ImageFactory {
-        constructor(src, name, parent, id, photographerId, likes) {
+        constructor(src, name, parent, description, likes, id, photographerId ) {
             this.id=id;
             this.src=src;
             this.name=name;
             this.parent=parent;
             this.photographerId=photographerId;
+            this.description=description;
             this.likes=likes;
         }
         createMedia() {
+            let divCarteImg= document.createElement("div");
+            creaDiv.appendChild(divCarteImg);
+            divCarteImg.id="idCarteImg";
+
             let imagePhotographe = document.createElement("img");
-            creaDiv.appendChild(imagePhotographe);
+            divCarteImg.appendChild(imagePhotographe);
             imagePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
+
+            const divP =document.createElement("div");
+            divCarteImg.appendChild(divP);
+            divP.id="idDivP"
+            const pDescription =document.createElement("p");
+            divP.appendChild(pDescription);
+            pDescription.textContent=this.description;
+
+            const pLikes =document.createElement("p");
+            divP.appendChild(pLikes);
+            pLikes.textContent=this.likes+"♥";
+
             return imagePhotographe;
+            
         }
     }
 
     class VideoFactory {
-        constructor(src, name, parent, id, photographerId, likes) {
+        constructor(src, name, parent, description, likes, id, photographerId) {
             this.id=id;
             this.src=src;
             this.name=name;
             this.parent=parent;
             this.photographerId=photographerId;
+            this.description=description;
             this.likes=likes;
+            
         }
         createMedia() {
+
+            let divCarteVideo= document.createElement("div");
+            creaDiv.appendChild(divCarteVideo);
+            divCarteVideo.id="idCarteVideo";
+            
             
             let videoPhotographe = document.createElement("video"); 
             let sourcePhotographe = document.createElement("source");
-            creaDiv.appendChild(videoPhotographe);
+            divCarteVideo.appendChild(videoPhotographe);
             videoPhotographe.appendChild(sourcePhotographe);
 
             sourcePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
             sourcePhotographe.type="video/mp4";
             videoPhotographe.controls="true";
             videoPhotographe.autoplay="true";
+
+            const divP =document.createElement("div");
+            divCarteVideo.appendChild(divP);
+            divP.id="idDivP"
+
+            const pDescription =document.createElement("p");
+            divP.appendChild(pDescription);
+            pDescription.textContent=this.description;
+
+            const pLikes =document.createElement("p");
+            divP.appendChild(pLikes);
+            pLikes.textContent=this.likes;
 
             return videoPhotographe, sourcePhotographe;
             
