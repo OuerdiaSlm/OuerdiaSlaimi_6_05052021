@@ -14,7 +14,9 @@
     
     <header class="topnav" id="myTopnav">
         <div class="header_navbar">
-            <img class="logo" src="logo.png">
+          <a href="index.html">
+            <img class="logo" alt="Logo de FishEye" src="logo.png">
+          </a>
         </div>
     </header>
 
@@ -60,7 +62,7 @@
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -71,7 +73,7 @@
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -115,12 +117,12 @@
 
 
       <section id="photographerProfil">
-        <div>
-          <h4>Trier par</h4>
-          <select id="menuDeroulant">
-            <option value="Popularité">Popularité</option>
-            <option value="Date">Date</option>
-            <option value="Titre">Titre</option>
+        <div id="divMenuDeroulant">
+          <h4 id="trierPar">Trier par</h4>
+          <select id="menuDeroulant" aria-label="Filtre de tri">
+            <option class="menuOption" value="Popularité">Popularité</option>
+            <option class="menuOption" value="Date">Date</option>
+            <option class="menuOption" value="Titre">Titre</option>
           </select>
         </div>
         
@@ -129,11 +131,13 @@
       <section id="diapo">
         <button id="close">X</button>
         <div class="elementActive">
-          <button id="prev"> prev </button>
-            <img src="" id="imgDiapo">
+          <button id="prev"> < </button>
+            <img src="" alt="" id="imgDiapo">
             <video src="" id="vidDiapo"></video>
-          <button id="next"> next </button>
-      </div>
+            
+          <button id="next"> > </button>
+          
+      </div><p id="diapoDesc"></p>
   
       </section>
 

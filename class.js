@@ -30,6 +30,7 @@ const photographe = document.getElementById("photographe");
             const image = document.createElement("img");
             lien.appendChild(image)
             image.src="Sample Photos/Photographers ID Photos/"+this.portrait;
+            image.setAttribute("alt",this.name);
 
             //Création id pour img du profile
             const attributeProfilImage = document.createAttribute('id')
@@ -117,6 +118,7 @@ const photographe = document.getElementById("photographe");
             divCarteImg.id="idCarteImg";
 
             let imagePhotographe = document.createElement("img");
+            imagePhotographe.setAttribute("alt",this.name);
             divCarteImg.appendChild(imagePhotographe);
             imagePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
 
@@ -130,6 +132,7 @@ const photographe = document.getElementById("photographe");
             const pLikes =document.createElement("p");
             divP.appendChild(pLikes);
             pLikes.textContent=this.likes+"♥";
+            pLikes.id="idPLikesImg";
 
             return imagePhotographe;
             
@@ -174,7 +177,8 @@ const photographe = document.getElementById("photographe");
 
             const pLikes =document.createElement("p");
             divP.appendChild(pLikes);
-            pLikes.textContent=this.likes;
+            pLikes.textContent=this.likes+"♥";
+            pLikes.id="idPLikesVideo";
 
             return videoPhotographe, sourcePhotographe;
             

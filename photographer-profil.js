@@ -95,6 +95,13 @@ creaDiv.id="idCreaDiv";
                // Recuperation des images
                let imgDiaporama=document.getElementById("imgDiapo");
                imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
+               imgDiaporama.setAttribute("alt",photographeData[i].description);
+
+               let diapoDesc=document.getElementById("diapoDesc");
+               diapoDesc.textContent=photographeData[i].description;
+               console.log(photographeData[i].description);
+
+               
 
 
                 // button next et prev
@@ -108,11 +115,13 @@ creaDiv.id="idCreaDiv";
                             imgDiaporama.style.display="inline";
                             vidDiaporama.style.display="none";
                             imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                            diapoDesc.textContent=photographeData[x].description;
                           
                             vidDiaporama.src="";
                         } else {
                             let vidDiaporama=document.getElementById("vidDiapo");
                             vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                            diapoDesc.textContent=photographeData[x].description;
                             imgDiaporama.src="";
                             vidDiaporama.style.display="block";
                             imgDiaporama.style.display="none";
@@ -132,10 +141,12 @@ creaDiv.id="idCreaDiv";
                             imgDiaporama.style.display="inline";
                             vidDiaporama.style.display="none";
                             imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                            diapoDesc.textContent=photographeData[x].description;
                         } else {
                             vidDiaporama.style.display="block";
                             imgDiaporama.style.display="none";
                             vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                            diapoDesc.textContent=photographeData[x].description;
                             vidDiaporama.type="video/mp4";
                             vidDiaporama.controls="true";
                             vidDiaporama.autoplay="true";
@@ -158,11 +169,13 @@ creaDiv.id="idCreaDiv";
                                 imgDiaporama.style.display="inline";
                                 vidDiaporama.style.display="none";
                                 imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                                diapoDesc.textContent=photographeData[x].description;
                               
                                 vidDiaporama.src="";
                             } else {
                                 let vidDiaporama=document.getElementById("vidDiapo");
                                 vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                                diapoDesc.textContent=photographeData[x].description;
                                 imgDiaporama.src="";
                                 vidDiaporama.style.display="block";
                                 imgDiaporama.style.display="none";
@@ -182,10 +195,12 @@ creaDiv.id="idCreaDiv";
                                 imgDiaporama.style.display="inline";
                                 vidDiaporama.style.display="none";
                                 imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                                diapoDesc.textContent=photographeData[x].description;
                             } else {
                                 vidDiaporama.style.display="block";
                                 imgDiaporama.style.display="none";
                                 vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
+                                diapoDesc.textContent=photographeData[x].description;
                                 vidDiaporama.type="video/mp4";
                                 vidDiaporama.controls="true";
                                 vidDiaporama.autoplay="true";
