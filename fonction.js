@@ -25,7 +25,7 @@ function diapo(){
                     vidDiaporama.autoplay="true";
                 }
                 
-                }
+        }
 }
     
     

@@ -22,6 +22,7 @@ divInfosP2.id="idInfosP2";
 
 const buttonContact= document.createElement("div");
 parentImg.insertBefore(buttonContact, secondChild);
+buttonContact.tabIndex=0;
 buttonContact.id="modal-btn";
 buttonContact.class="modal-btn";
 buttonContact.textContent="Contactez-moi" 
@@ -36,7 +37,7 @@ close.addEventListener("click", function(){
 })
 //...................................................
 
-// RACOURCI CLAVIER ESCAPE...........................
+// RACOURCI CLAVIER ESCAPE DIAPO...........................
 window.addEventListener("keydown", function(eventEscape){
     if (eventEscape.key=="Escape") {
         // Fermeture de la modal

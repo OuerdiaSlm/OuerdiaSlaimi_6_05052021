@@ -3,7 +3,7 @@
 fetch ("JsonFile.json").then(response=>response.json())
 .then(data=>{
     
-
+    
 
     //Boucle: création de toutes les cartes photographe.
     for (let i=0; i<data.photographers.length; i++){
@@ -49,6 +49,42 @@ fetch ("JsonFile.json").then(response=>response.json())
             localStorage.setItem("photographe",JSON.stringify(tab));
         }
         )
+    }
+
+    //  Recuperation des filtres dans le html avec la class
+    let filtre=document.getElementsByClassName("filtre");
+    let figure=document.querySelectorAll(" .classFigure > .classDivInfos > div ");
+
+    //Recuperation de tous les filtres
+    for(let i=0;i<filtre.length;i++){
+    
+        filtre[i].addEventListener("click",function(){
+        
+        //Recupération des figures
+        for(let j=0;j<figure.length;j++){
+            let count=0;
+
+            //Recuperation des tags d'une figure "enfant de la figure"
+            for(let g=0;g<figure[j].childNodes.length;g++){
+                
+                
+                let filtreMin=filtre[i].textContent
+                    //Min pour les filtres de la navbar
+                    if(filtreMin.toLowerCase()===figure[j].childNodes[g].textContent){
+                    count=count+1;
+
+                    }
+                }
+            
+            let figure2= figure[j].parentNode.parentNode;
+            if(count==0){
+            figure2.style.display="none";
+            }
+            else{
+            figure2.style.display="block";
+            }
+        }
+        })
     }
 
 

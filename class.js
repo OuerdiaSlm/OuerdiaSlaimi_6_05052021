@@ -14,6 +14,9 @@ const photographe = document.getElementById("photographe");
 
         html(){
             const creaFigure = document.createElement("figure");
+            creaFigure.setAttribute("class", "classFigure");
+            
+
             photographe.appendChild(creaFigure);
 
             // Div img
@@ -39,18 +42,19 @@ const photographe = document.getElementById("photographe");
 
             //DIV pour les infos du DOM
             const divInfoDom = document.createElement("div")
+            divInfoDom.setAttribute("class", "classDivInfos");
             creaFigure.appendChild(divInfoDom)
 
             //Récupération et intégration dans le DOM du nom & prénom
-            const nom = document.createElement("h2");
+            const nom = document.createElement("h1");
             attribution(divInfoDom,nom,this.name);
             
             //Récupération et intégration dans le DOM de la ville
-            const ville = document.createElement("h4");
+            const ville = document.createElement("h2");
             attribution(divInfoDom,ville,this.city+", ");
 
             //Récupération et intégration dans le DOM du pays
-            const pays = document.createElement("h4");
+            const pays = document.createElement("h2");
             attribution(divInfoDom,pays,this.country);
 
 
@@ -66,6 +70,7 @@ const photographe = document.getElementById("photographe");
 
             //Récupération et intégration dans le DOM des tags un par un
             const divTags = document.createElement("div");
+            divTags.setAttribute("class", "classDivTags")
             divInfoDom.appendChild(divTags);
 
             for (let j=0; j<this.tags.length; j++) {
@@ -118,7 +123,7 @@ const photographe = document.getElementById("photographe");
             divCarteImg.id="idCarteImg";
 
             let imagePhotographe = document.createElement("img");
-            imagePhotographe.setAttribute("alt",this.name);
+            imagePhotographe.setAttribute("alt",this.name+" "+this.description);
             divCarteImg.appendChild(imagePhotographe);
             imagePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
 
@@ -157,7 +162,8 @@ const photographe = document.getElementById("photographe");
             divCarteVideo.id="idCarteVideo";
             
             
-            let videoPhotographe = document.createElement("video"); 
+            let videoPhotographe = document.createElement("video");
+            videoPhotographe.setAttribute("alt",this.name+" "+this.description); 
             let sourcePhotographe = document.createElement("source");
             divCarteVideo.appendChild(videoPhotographe);
             videoPhotographe.appendChild(sourcePhotographe);

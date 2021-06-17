@@ -14,7 +14,10 @@ function newFunction() {
 // launch modal forms
 function launchModal() {
   modalbg.style.display = "block";
+  //document.getElementById("modal-btn").focus();
 }
+
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -27,6 +30,16 @@ closeModalX.forEach(btn => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// RACOURCI CLAVIER ESCAPE Formulaire...........................
+window.addEventListener("keydown", function(eventEscapeFormulaire){
+  if (eventEscapeFormulaire.key=="Escape") {
+      // Fermeture de la modal Formulaire
+      
+        modalbg.style.display = "none";
+      
+  }
+})
 
 
 

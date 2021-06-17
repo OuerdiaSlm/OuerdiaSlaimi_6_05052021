@@ -104,14 +104,14 @@ figure {
     margin-left: 350px;
 }
 
-h2:not(.navbar-photographe) {
+h1:not(.h1Contenu) {
     font-style: normal;
     font-weight: normal;
     font-size: 36px;
     color: #D3573C;
 }
 
-h4{
+h2{
     font-style: normal;
     font-weight: normal;
     font-size: 13px;
@@ -150,14 +150,14 @@ h3{
     text-align: left;
 }
 
-#idInfosP2 h2:not(.navbar-photographe) {
+#idInfosP2 h1:not(.navbar-photographe) {
     font-style: normal;
     font-weight: normal;
     font-size: 64px;
     color: #D3573C;
 }
 
-#idInfosP2 h4{
+#idInfosP2 h2{
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -174,11 +174,7 @@ h3{
 }
 
 #idInfosP2 h5{
-    font-style: normal;
-    font-weight: normal;
-    font-size: 9px;
-    color: #757575;
-    margin-bottom: 3px;
+    display: none;
 }
 
 #idInfosP2 h3{
@@ -304,6 +300,9 @@ video {
     color: black;
     font-size: 18px;
     font-weight: bold;
+    
+    display: inline;
+    margin-bottom: 3px;
 }
 
 #menuDeroulant {
