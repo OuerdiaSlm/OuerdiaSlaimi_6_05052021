@@ -80,7 +80,6 @@ a:link
     height: 313px;
     display: flex;
     margin: 40px;
-    flex-direction: row-reverse;
     justify-content: space-around;
     align-items: center;
     background-color: #FAFAFA;
@@ -101,6 +100,7 @@ figure {
 }
 
 #imageProfile2{
+    order: 3;
     margin-left: 350px;
 }
 
@@ -281,6 +281,7 @@ video {
 
 
 #modal-btn {
+    order: 2;
     width: 170px;
     color: white;
     background-color: #901C1C;
@@ -347,6 +348,28 @@ video {
 
 #idPLikesVideo {
     font-weight: bold;
+}
+
+#LikesPrix {
+    background-color: #DB8876;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+
+    height: 89px;
+    width: 376px;
+    border-radius: 5px;
+
+    font-weight: 500;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 31px;
+    text-align: right;
+    margin-right: 30px;
+    padding: 30px;
+
+    display: flex;
+    justify-content: space-around;
 }
 
 

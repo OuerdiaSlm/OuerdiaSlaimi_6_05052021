@@ -126,6 +126,7 @@ const photographe = document.getElementById("photographe");
             imagePhotographe.setAttribute("alt",this.name+" "+this.description);
             divCarteImg.appendChild(imagePhotographe);
             imagePhotographe.src="Sample Photos/"+this.name+"/"+this.src;
+            imagePhotographe.tabIndex=0;
 
             const divP =document.createElement("div");
             divCarteImg.appendChild(divP);

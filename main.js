@@ -30,7 +30,10 @@ fetch ("JsonFile.json").then(response=>response.json())
                             type:"image",
                             src: data.media[j].image,
                             description: data.media[j].description,
-                            likes: data.media[j].likes
+                            likes: data.media[j].likes,
+                            date: data.media[j].date,
+                            price: data.media[j].price,
+                            name: data.media[j].name
                             
                           });
                     } else {
@@ -38,12 +41,17 @@ fetch ("JsonFile.json").then(response=>response.json())
                             type:"video",
                             src: data.media[j].video,
                             description: data.media[j].description,
-                            likes: data.media[j].likes
+                            likes: data.media[j].likes,
+                            date: data.media[j].date,
+                            price: data.media[j].price,
+                            name: data.media[j].name
                             
                         });
                     }
+                    
                 }
             }
+            
 
             //...........Envoie dans le local storage (deuxieme page)...................//
             localStorage.setItem("photographe",JSON.stringify(tab));
@@ -51,6 +59,7 @@ fetch ("JsonFile.json").then(response=>response.json())
         )
     }
 
+    //FILTRES
     //  Recuperation des filtres dans le html avec la class
     let filtre=document.getElementsByClassName("filtre");
     let figure=document.querySelectorAll(" .classFigure > .classDivInfos > div ");

@@ -11,7 +11,7 @@ carte1.html();
 let imageP2= document.querySelector("figure > div");
 imageP2.id="imageProfile2"
 
-let secondChild=document.querySelector("figure  div:nth-child(2)");
+let secondChild=document.querySelector("figure  div:nth-child(1)");
 let parentImg=document.querySelector("figure > div").parentNode;
 let recupFigure=document.getElementsByTagName("figure")
 
@@ -48,31 +48,6 @@ window.addEventListener("keydown", function(eventEscape){
 })
 //....................................................
 
-let prev=document.getElementById("prev");
-let next=document.getElementById("next");
-
-
-//....................MENU TRIER PAR...................
-
-let selectMenu = document.getElementById("menuDeroulant");
-
-//onchange= detecte les changement(sa remplace le click)
-selectMenu.onchange = (event) => {
-    let inputText = event.target.value; //target il cible
-    console.log(inputText);
-}
-
-//......................................................
-
-
-
-
-
-
-
-
-
-
 
 
 //creation div
@@ -86,141 +61,193 @@ creaDiv.id="idCreaDiv";
        
         let mediaUse=  new MediaFactory( photographeData[i].type, photographeData[i].src, photographeData[0].name, creaDiv, photographeData[i].description, photographeData[i].likes).detecte();
         //console.log(photographeData[i].description+"DDDEESSSSSS")
+        console.log(mediaUse)
 //.....................................DIAPO........................................//
 
-            // click image pour faire apparaitre le diapo
-            mediaUse.addEventListener("click",function(){
-               let diaporama = document.getElementById("diapo");
-               diaporama.style.display = "block";
+            mediaUse.addEventListener("click", function() {
+                diapo(photographeData,i,photographeData[0].name);
+            
+            })
+            
+    }
+    //....................MENU TRIER PAR...................
 
-               // Recuperation des images
-               let imgDiaporama=document.getElementById("imgDiapo");
-               imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[i].src;
-               imgDiaporama.setAttribute("alt",photographeData[i].description);
+    let selectMenu = document.getElementById("menuDeroulant");
 
-               let diapoDesc=document.getElementById("diapoDesc");
-               diapoDesc.textContent=photographeData[i].description;
-               console.log(photographeData[i].description);
+    //onchange= detecte les changement(sa remplace le click)
+    selectMenu.onchange = (event) => {
+    let inputText = event.target.value; //target il cible
+    console.log(inputText);
+    //.........................................................................................
+    if (inputText==="Popularité"){
 
-               
+        let containImages=document.getElementById("idCreaDiv");
+        containImages.innerHTML="";
 
 
-                // button next et prev
-                let x=i;
-                next.addEventListener("click",function(){
-                    if(x<photographeData.length-1){
-                        x=x+1
-                        let vidDiaporama=document.getElementById("vidDiapo");
-                        if (photographeData[x].type=="image"){
-                            console.log("ok");
-                            imgDiaporama.style.display="inline";
-                            vidDiaporama.style.display="none";
-                            imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                            diapoDesc.textContent=photographeData[x].description;
-                          
-                            vidDiaporama.src="";
-                        } else {
-                            let vidDiaporama=document.getElementById("vidDiapo");
-                            vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                            diapoDesc.textContent=photographeData[x].description;
-                            imgDiaporama.src="";
-                            vidDiaporama.style.display="block";
-                            imgDiaporama.style.display="none";
-                            vidDiaporama.type="video/mp4";
-                            vidDiaporama.controls="true";
-                            vidDiaporama.autoplay="true";
-                        }
+        let tabX=[];
+        let tabTest=[];
+        for (let h =1; h<photographeData.length; h++){
+            tabTest.push({like: photographeData[h].likes, description: photographeData[h].description});
+            
+        }
+        // ........
+        //tabTest.sort((a,b) => b-a ) trier tabTest;
+        const sortByMapped = (map,compareFn) => (a,b) => compareFn(map(a),map(b));
+        const byValue = (a,b) => b - a;
+        const toLike = e => e.like;
+        const byLike = sortByMapped(toLike,byValue);
+
+        tabTest.sort(byLike);
+        //.......
+        console.log(tabTest);
+        for (let m =0; m<photographeData.length-1; m++){
+            for(let o=1; o<photographeData.length; o++) {
+                console.log(tabTest[m]);
+                if(tabTest[m].like ===photographeData[o].likes && photographeData[o].description === tabTest[m].description
+                    ){
+                        console.log("okkkkkk");
                         
-                        }
-                })
-               
-                prev.addEventListener("click",function(){
-                    if(x>1){
-                        x=x-1
-                        let vidDiaporama=document.getElementById("vidDiapo");
-                        if (photographeData[x].type=="image"){
-                            imgDiaporama.style.display="inline";
-                            vidDiaporama.style.display="none";
-                            imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                            diapoDesc.textContent=photographeData[x].description;
-                        } else {
-                            vidDiaporama.style.display="block";
-                            imgDiaporama.style.display="none";
-                            vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                            diapoDesc.textContent=photographeData[x].description;
-                            vidDiaporama.type="video/mp4";
-                            vidDiaporama.controls="true";
-                            vidDiaporama.autoplay="true";
-                        }
-                    }
-                })
-
-               
-
-
-                // Racourci CLAVIER
-               window.addEventListener("keydown", function(event) {
-                if (event.key== "ArrowRight" || event.key== "Right" ){ 
-
-                        if(x<photographeData.length-1){
-                            x=x+1
-                            let vidDiaporama=document.getElementById("vidDiapo");
-                            if (photographeData[x].type=="image"){
-                                console.log("ok");
-                                imgDiaporama.style.display="inline";
-                                vidDiaporama.style.display="none";
-                                imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                                diapoDesc.textContent=photographeData[x].description;
-                              
-                                vidDiaporama.src="";
-                            } else {
-                                let vidDiaporama=document.getElementById("vidDiapo");
-                                vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                                diapoDesc.textContent=photographeData[x].description;
-                                imgDiaporama.src="";
-                                vidDiaporama.style.display="block";
-                                imgDiaporama.style.display="none";
-                                vidDiaporama.type="video/mp4";
-                                vidDiaporama.controls="true";
-                                vidDiaporama.autoplay="true";
-                            }
-                            
-                            }
-                        
-                } else if (event.key== "ArrowLeft" || event.key== "Left"){
-                    
-                        if(x>1){
-                            x=x-1
-                            let vidDiaporama=document.getElementById("vidDiapo");
-                            if (photographeData[x].type=="image"){
-                                imgDiaporama.style.display="inline";
-                                vidDiaporama.style.display="none";
-                                imgDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                                diapoDesc.textContent=photographeData[x].description;
-                            } else {
-                                vidDiaporama.style.display="block";
-                                imgDiaporama.style.display="none";
-                                vidDiaporama.src="Sample Photos/"+photographeData[0].name+"/"+photographeData[x].src;
-                                diapoDesc.textContent=photographeData[x].description;
-                                vidDiaporama.type="video/mp4";
-                                vidDiaporama.controls="true";
-                                vidDiaporama.autoplay="true";
-                            }
-                        }
-                
+                    tabX.push(photographeData[o]);
                 }
+            }
+        }
+        console.log(tabX);
+        for (let l=0; l<tabX.length; l++){
+            let mediaUse2=  new MediaFactory( tabX[l].type, tabX[l].src, photographeData[0].name, creaDiv, tabX[l].description, tabX[l].likes).detecte();
+            console.log(l);
+            mediaUse2.addEventListener("click", function() {
+                diapo(tabX,l,photographeData[0].name);
+            })
+        } 
+        
+        console.log(tabX);
+        console.log(tabTest);
+        }
 
-            }) 
+        if (inputText==="Date"){
+
+            let containImages=document.getElementById("idCreaDiv");
+            containImages.innerHTML="";
+    
+    
+            let tabX=[];
+            let tabTest=[];
+            for (let h =1; h<photographeData.length; h++){
+                tabTest.push({date: new Date( photographeData[h].date), description: photographeData[h].description});
+                console.log(photographeData[h].date);
+            }
+            // ........
+            //tabTest.sort((a,b) => b-a );
+            const sortByMapped = (map,compareFn) => (a,b) => compareFn(map(a),map(b));
+            const byValue = (a,b) => b - a;
+            const toDate = e => e.date;
+            const byDate = sortByMapped(toDate,byValue);
+
+            tabTest.sort(byDate);
+    
 
             
-              
+            //.......
+            console.log(tabTest);
+            for (let m =0; m<photographeData.length-1; m++){
+                for(let o=1; o<photographeData.length; o++) {
+                    let datePhoto = new Date(photographeData[o].date);
+                    console.log(tabTest[m].date);
+                    console.log(datePhoto);
+                    if(tabTest[m].date.toString() === datePhoto.toString() && photographeData[o].description === tabTest[m].description
+                        ){
+                            console.log("okkkkkk");
+                            
+                        tabX.push(photographeData[o]);
+                    }
+                }
+            }
+            console.log(tabX);
+            for (let l=0; l<tabX.length; l++){
+                let mediaUse2=  new MediaFactory( tabX[l].type, tabX[l].src, photographeData[0].name, creaDiv, tabX[l].description, tabX[l].likes).detecte();
+                console.log(l);
+                mediaUse2.addEventListener("click", function() {
+                    diapo(tabX,l,photographeData[0].name);
+                })
+            } 
+            
+            console.log(tabX);
+            console.log(tabTest);
+            }
 
-            })
+            if (inputText==="Titre"){
+
+                let containImages=document.getElementById("idCreaDiv");
+                containImages.innerHTML="";
+        
+        
+                let tabX=[];
+                let tabTest=[];
+                for (let h =1; h<photographeData.length; h++){
+                    tabTest.push({description: photographeData[h].description});
+                    console.log(photographeData[h].description);
+                }
+                // ........
+                
+    
+                tabTest.sort(function compare(a, b) {
+                    if (a.description < b.description)
+                    return -1;
+                    if (b.description<a.description)
+                    return 1;
+                    return 0;
+                });
+
+                console.log(tabTest);
         
     
+                
+                //.......
+                for (let m =0; m<photographeData.length-1; m++){
+                    for(let o=1; o<photographeData.length; o++) {
+                       
+                        console.log(tabTest[m].description);
+                        if( photographeData[o].description === tabTest[m].description
+                            ){
+                                console.log("okkkkkk");
+                                
+                            tabX.push(photographeData[o]);
+                        }
+                    }
+                }
+                console.log(tabX);
+                for (let l=0; l<tabX.length; l++){
+                    let mediaUse2=  new MediaFactory( tabX[l].type, tabX[l].src, photographeData[0].name, creaDiv, tabX[l].description, tabX[l].likes).detecte();
+                    console.log(l);
+                    mediaUse2.addEventListener("click", function() {
+                        diapo(tabX,l,photographeData[0].name);
+                    })
+                } 
+                
+                console.log(tabX);
+                console.log(tabTest);
+                }
+            
+
+    
+}
+
+
+
+let somme=0;
+for (let d=1; d<photographeData.length;d++){
     
     
-    }
+somme= somme+photographeData[d].likes;
+
+}
+console.log(somme);
+document.getElementById("sommeLikes").textContent=somme + "♥" ;
+document.getElementById("prix").textContent=photographeData[0].price+"€/jour";
+//......................................................
+    
+    
 
     const formName=document.getElementById("formName");
     formName.textContent=photographeData[0].name;
