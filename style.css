@@ -36,20 +36,16 @@ body {
 }
 
 .main-navbar a  {
+    color: #901C1C;
     margin-top: 10px;
-    border: solid 1px #C4C4C4;
+    border: solid 0.5px #C4C4C4;
     border-radius:  25px;
     padding: 4px;
     margin: 10px;
 }
 
-/*
-.main-navbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-*/
+
+
 
 .navbar-photographe {
     padding: 20px;
@@ -57,7 +53,6 @@ body {
     font-size: 35px;
     font-weight : normal;
 }
-
 
 
 a:link 
@@ -372,34 +367,62 @@ video {
     justify-content: space-around;
 }
 
+.classLikeCoeur{
+    display: flex;
+    align-items: center;
+}
+.classCoeur {
+    font-size: 29px;
+    margin: 5px;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-@media screen and (min-width: 0px) and (max-width: 550px) {
+@media screen and (min-width: 0px) and (max-width: 1000px) {
     .top {
         display: none;
     }
 
+    .logo{
+        width: 180px;
+        height: auto;
+        padding: 0px;
+    }
 
     .navbar-photographe {
-        position: absolute;
-        margin-left: -170px;
+        order: 2;
         left: 100%;
         top: 10px;
         font-size: 13px;
+        padding-left: 0px;
+        padding: 0px;
+        margin-right: 30px;
     }
 
     .header_navbar {
-        justify-content: start;
+        display: flex;
+        justify-content: space-between;
+    }
+    .main-navbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        margin: 15px;
+    }
+    .main-navbar a {
+        margin: 2px;
+    }
+
+    #figureImgP2{
+        width: 200px;
+    }
+
+    
+    .main-navbar {
+        order:3 ;
+}
+
+    .classFigure{
+        margin: 0px;
     }
 }    

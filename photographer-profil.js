@@ -1,11 +1,11 @@
 let photographeData= JSON.parse(localStorage.getItem("photographe"));
+let infoPhotographe= JSON.parse(localStorage.getItem("infoPhotographe"));
 console.log(photographeData);
 const photographeProfil = document.getElementById("photographerProfil");
 
-let carte1= new CartePhotographeFactory(photographeData[0].name,photographeData[0].id,photographeData[0].city,photographeData[0].country,photographeData[0].tags,photographeData[0].tagline,photographeData[0].portrait, photographeData[0].price)
-        console.log(photographeData[1]);
+let carte1= new CartePhotographeFactory(infoPhotographe[0].name,infoPhotographe[0].id,infoPhotographe[0].city,infoPhotographe[0].country,infoPhotographe[0].tags,infoPhotographe[0].tagline,infoPhotographe[0].portrait, infoPhotographe[0].price)
+        console.log(carte1);
 carte1.html();
-
 
 //Création du id
 let imageP2= document.querySelector("figure > div");
@@ -27,8 +27,6 @@ buttonContact.id="modal-btn";
 buttonContact.class="modal-btn";
 buttonContact.textContent="Contactez-moi" 
 
-
-        
 // Fermeture de la modal............................
 let close= document.getElementById("close");
 close.addEventListener("click", function(){
@@ -48,27 +46,21 @@ window.addEventListener("keydown", function(eventEscape){
 })
 //....................................................
 
-
-
 //creation div
 const creaDiv = document.createElement("div");
 photographeProfil.appendChild(creaDiv);
 creaDiv.id="idCreaDiv";
 
     //Récuperation de toutes les images
-    for (let i =1; i<photographeData.length; i++){
-        //console.log(photographeData[i]); 
-       
-        let mediaUse=  new MediaFactory( photographeData[i].type, photographeData[i].src, photographeData[0].name, creaDiv, photographeData[i].description, photographeData[i].likes).detecte();
+    for (let i =0; i<photographeData.length; i++){
+        
+        let mediaUse=  new MediaFactory( photographeData[i].type, photographeData[i].src, infoPhotographe[0].name, creaDiv, photographeData[i].description, photographeData[i].likes).detecte();
         //console.log(photographeData[i].description+"DDDEESSSSSS")
         console.log(mediaUse)
 //.....................................DIAPO........................................//
-
-            mediaUse.addEventListener("click", function() {
-                diapo(photographeData,i,photographeData[0].name);
-            
-            })
-            
+        mediaUse.addEventListener("click", function() {
+            diapo(photographeData,i,infoPhotographe[0].name);
+        }) 
     }
     //....................MENU TRIER PAR...................
 
@@ -77,177 +69,128 @@ creaDiv.id="idCreaDiv";
     //onchange= detecte les changement(sa remplace le click)
     selectMenu.onchange = (event) => {
     let inputText = event.target.value; //target il cible
-    console.log(inputText);
+
     //.........................................................................................
     if (inputText==="Popularité"){
-
         let containImages=document.getElementById("idCreaDiv");
         containImages.innerHTML="";
-
-
-        let tabX=[];
-        let tabTest=[];
-        for (let h =1; h<photographeData.length; h++){
-            tabTest.push({like: photographeData[h].likes, description: photographeData[h].description});
-            
+        let tabAfficheHtml=[];
+        let tabTri=[];
+        for (let h =0; h<photographeData.length; h++){
+            tabTri.push({like: photographeData[h].likes, description: photographeData[h].description});
         }
         // ........
-        //tabTest.sort((a,b) => b-a ) trier tabTest;
+        //tabTri.sort((a,b) => b-a ) trier tabTri;
         const sortByMapped = (map,compareFn) => (a,b) => compareFn(map(a),map(b));
         const byValue = (a,b) => b - a;
         const toLike = e => e.like;
         const byLike = sortByMapped(toLike,byValue);
-
-        tabTest.sort(byLike);
+        tabTri.sort(byLike);
         //.......
-        console.log(tabTest);
-        for (let m =0; m<photographeData.length-1; m++){
-            for(let o=1; o<photographeData.length; o++) {
-                console.log(tabTest[m]);
-                if(tabTest[m].like ===photographeData[o].likes && photographeData[o].description === tabTest[m].description
-                    ){
-                        console.log("okkkkkk");
-                        
-                    tabX.push(photographeData[o]);
+        for (let m =0; m<photographeData.length; m++){
+            for(let o=0; o<photographeData.length; o++) {
+                if(tabTri[m].like ===photographeData[o].likes && photographeData[o].description === tabTri[m].description){
+                    tabAfficheHtml.push(photographeData[o]);
                 }
             }
         }
-        console.log(tabX);
-        for (let l=0; l<tabX.length; l++){
-            let mediaUse2=  new MediaFactory( tabX[l].type, tabX[l].src, photographeData[0].name, creaDiv, tabX[l].description, tabX[l].likes).detecte();
-            console.log(l);
+        for (let l=0; l<tabAfficheHtml.length; l++){
+            let mediaUse2=  new MediaFactory( tabAfficheHtml[l].type, tabAfficheHtml[l].src, infoPhotographe[0].name, creaDiv, tabAfficheHtml[l].description, tabAfficheHtml[l].likes).detecte();
             mediaUse2.addEventListener("click", function() {
-                diapo(tabX,l,photographeData[0].name);
+                diapo(tabAfficheHtml,l,infoPhotographe[0].name);
             })
         } 
-        
-        console.log(tabX);
-        console.log(tabTest);
+
+        //function likeClick
+        likesClick(coeur, like);
         }
 
         if (inputText==="Date"){
-
             let containImages=document.getElementById("idCreaDiv");
             containImages.innerHTML="";
-    
-    
-            let tabX=[];
-            let tabTest=[];
-            for (let h =1; h<photographeData.length; h++){
-                tabTest.push({date: new Date( photographeData[h].date), description: photographeData[h].description});
-                console.log(photographeData[h].date);
+            let tabAfficheHtml=[];
+            let tabTri=[];
+            for (let h =0; h<photographeData.length; h++){
+                tabTri.push({date: new Date( photographeData[h].date), description: photographeData[h].description});
             }
             // ........
-            //tabTest.sort((a,b) => b-a );
+            //tabTri.sort((a,b) => b-a );
             const sortByMapped = (map,compareFn) => (a,b) => compareFn(map(a),map(b));
             const byValue = (a,b) => b - a;
             const toDate = e => e.date;
             const byDate = sortByMapped(toDate,byValue);
+            tabTri.sort(byDate);
 
-            tabTest.sort(byDate);
-    
-
-            
             //.......
-            console.log(tabTest);
-            for (let m =0; m<photographeData.length-1; m++){
-                for(let o=1; o<photographeData.length; o++) {
-                    let datePhoto = new Date(photographeData[o].date);
-                    console.log(tabTest[m].date);
-                    console.log(datePhoto);
-                    if(tabTest[m].date.toString() === datePhoto.toString() && photographeData[o].description === tabTest[m].description
-                        ){
-                            console.log("okkkkkk");
-                            
-                        tabX.push(photographeData[o]);
-                    }
+            for (let m =0; m<photographeData.length; m++){
+                for(let o=0; o<photographeData.length; o++) {
+                    if(tabTri[m].date.toString() === new Date(photographeData[o].date).toString() && photographeData[o].description === tabTri[m].description){
+                            tabAfficheHtml.push(photographeData[o]);
+                        }
                 }
             }
-            console.log(tabX);
-            for (let l=0; l<tabX.length; l++){
-                let mediaUse2=  new MediaFactory( tabX[l].type, tabX[l].src, photographeData[0].name, creaDiv, tabX[l].description, tabX[l].likes).detecte();
-                console.log(l);
+            for (let l=0; l<tabAfficheHtml.length; l++){
+                let mediaUse2=  new MediaFactory( tabAfficheHtml[l].type, tabAfficheHtml[l].src, infoPhotographe[0].name, creaDiv, tabAfficheHtml[l].description, tabAfficheHtml[l].likes).detecte();
                 mediaUse2.addEventListener("click", function() {
-                    diapo(tabX,l,photographeData[0].name);
+                    diapo(tabAfficheHtml,l,infoPhotographe[0].name);
                 })
             } 
-            
-            console.log(tabX);
-            console.log(tabTest);
+
+            //function likeClick
+            likesClick(coeur, like);
             }
-
             if (inputText==="Titre"){
-
                 let containImages=document.getElementById("idCreaDiv");
                 containImages.innerHTML="";
-        
-        
-                let tabX=[];
-                let tabTest=[];
-                for (let h =1; h<photographeData.length; h++){
-                    tabTest.push({description: photographeData[h].description});
-                    console.log(photographeData[h].description);
+                let tabAfficheHtml=[];
+                let tabTri=[];
+                for (let h =0; h<photographeData.length; h++){
+                    tabTri.push({description: photographeData[h].description});
                 }
                 // ........
-                
-    
-                tabTest.sort(function compare(a, b) {
+                tabTri.sort(function compare(a, b) {
                     if (a.description < b.description)
                     return -1;
                     if (b.description<a.description)
                     return 1;
                     return 0;
                 });
-
-                console.log(tabTest);
-        
-    
-                
                 //.......
-                for (let m =0; m<photographeData.length-1; m++){
-                    for(let o=1; o<photographeData.length; o++) {
-                       
-                        console.log(tabTest[m].description);
-                        if( photographeData[o].description === tabTest[m].description
+                for (let m =0; m<photographeData.length; m++){
+                    for(let o=0; o<photographeData.length; o++) {
+                        if( photographeData[o].description === tabTri[m].description
                             ){
-                                console.log("okkkkkk");
-                                
-                            tabX.push(photographeData[o]);
+                            tabAfficheHtml.push(photographeData[o]);
                         }
                     }
                 }
-                console.log(tabX);
-                for (let l=0; l<tabX.length; l++){
-                    let mediaUse2=  new MediaFactory( tabX[l].type, tabX[l].src, photographeData[0].name, creaDiv, tabX[l].description, tabX[l].likes).detecte();
-                    console.log(l);
+                for (let l=0; l<tabAfficheHtml.length; l++){
+                    let mediaUse2=  new MediaFactory( tabAfficheHtml[l].type, tabAfficheHtml[l].src, infoPhotographe[0].name, creaDiv, tabAfficheHtml[l].description, tabAfficheHtml[l].likes).detecte();
                     mediaUse2.addEventListener("click", function() {
-                        diapo(tabX,l,photographeData[0].name);
+                        diapo(tabAfficheHtml,l,infoPhotographe[0].name);
                     })
                 } 
-                
-                console.log(tabX);
-                console.log(tabTest);
-                }
-            
 
-    
+                //function likeClick
+                likesClick(coeur, like);
+                }
 }
 
+//Augmentation des likes lors du click
+let coeur=document.getElementsByClassName("classCoeur");
+let like=document.getElementsByClassName("classLikes");
 
+likesClick(coeur, like);
 
+//Somme des likes + prix
 let somme=0;
 for (let d=1; d<photographeData.length;d++){
-    
-    
-somme= somme+photographeData[d].likes;
-
+    somme= somme+photographeData[d].likes;
 }
 console.log(somme);
-document.getElementById("sommeLikes").textContent=somme + "♥" ;
-document.getElementById("prix").textContent=photographeData[0].price+"€/jour";
-//......................................................
-    
-    
+document.getElementById("sommeLikes").textContent=somme + "❤" ;
+document.getElementById("prix").textContent=infoPhotographe[0].price+"€/jour";
 
-    const formName=document.getElementById("formName");
-    formName.textContent=photographeData[0].name;
+//......................................................
+const formName=document.getElementById("formName");
+formName.textContent=infoPhotographe[0].name;

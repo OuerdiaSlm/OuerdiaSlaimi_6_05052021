@@ -131,14 +131,24 @@ const photographe = document.getElementById("photographe");
             const divP =document.createElement("div");
             divCarteImg.appendChild(divP);
             divP.id="idDivP"
+
             const pDescription =document.createElement("p");
             divP.appendChild(pDescription);
             pDescription.textContent=this.description;
 
+            const divLikeCoeur=document.createElement("div");
+            divP.appendChild(divLikeCoeur);
+            divLikeCoeur.setAttribute("class", "classLikeCoeur")
+            
             const pLikes =document.createElement("p");
-            divP.appendChild(pLikes);
-            pLikes.textContent=this.likes+"♥";
-            pLikes.id="idPLikesImg";
+            divLikeCoeur.appendChild(pLikes);
+            pLikes.textContent=this.likes;
+            pLikes.setAttribute("class","classLikes");
+
+            const coeurLikes=document.createElement("span");
+            divLikeCoeur.appendChild(coeurLikes);
+            coeurLikes.textContent="❤";
+            coeurLikes.setAttribute("class","classCoeur");
 
             return imagePhotographe;
             
@@ -182,10 +192,19 @@ const photographe = document.getElementById("photographe");
             divP.appendChild(pDescription);
             pDescription.textContent=this.description;
 
+            const divLikeCoeur=document.createElement("div");
+            divP.appendChild(divLikeCoeur);
+            divLikeCoeur.setAttribute("class", "classLikeCoeur")
+
             const pLikes =document.createElement("p");
-            divP.appendChild(pLikes);
-            pLikes.textContent=this.likes+"♥";
-            pLikes.id="idPLikesVideo";
+            divLikeCoeur.appendChild(pLikes);
+            pLikes.textContent=this.likes;
+            pLikes.setAttribute("class","classLikes");
+
+            const coeurLikes=document.createElement("span");
+            divLikeCoeur.appendChild(coeurLikes);
+            coeurLikes.textContent="❤";
+            coeurLikes.setAttribute("class","classCoeur");
 
             return videoPhotographe, sourcePhotographe;
             
