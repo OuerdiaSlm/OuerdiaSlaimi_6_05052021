@@ -12,14 +12,14 @@
 
 .content {
   margin: 30px auto;
-  width: 100%;
+  width: 90%;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
-  background: #DB8876;
+  background: #db8876;
   overflow: hidden;
   position: relative;
-  color:black;
+  color: black;
   padding-top: 10px;
 }
 
@@ -28,10 +28,10 @@
 }
 
 label {
-    font-size: 20px;
-    font-weight: normal;
-    display: inline-block;
-    margin-top: 11px;
+  font-size: 20px;
+  font-weight: normal;
+  display: inline-block;
+  margin-top: 11px;
 }
 input {
   padding: 8px;
@@ -73,20 +73,16 @@ input[data-error]::after {
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-    margin-left: 6px;
-    margin-right: 20px;
-    font-size: 12px;
-    font-weight: normal;
+  margin-left: 6px;
+  margin-right: 20px;
+  font-size: 12px;
+  font-weight: normal;
 }
 
-
-
-
-.error{
-  color:#fff;
-  font-size:0.6em;
+.error {
+  color: #fff;
+  font-size: 0.6em;
 }
-
 
 .close {
   position: absolute;
@@ -172,7 +168,6 @@ input[data-error]::after {
   height: 48px;
 }
 
-
 /* custom select end */
 .text-label {
   font-weight: normal;
@@ -188,7 +183,6 @@ input[data-error]::after {
   margin-top: 59px;
 }
 
-
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -202,10 +196,10 @@ input[data-error]::after {
 #validation {
   padding-top: 10px;
   display: none;
-  margin-top:20px;
-  animation-duration:2s;
-  animation-fill-mode:forwards;
-  animation-name:apparitionValidation;
+  margin-top: 20px;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-name: apparitionValidation;
 }
 
 @keyframes apparitionValidation {
@@ -223,31 +217,30 @@ input[data-error]::after {
   display: none;
 }
 
-input, textarea {
-    font: 1em sans-serif;
-    width: 100%;
-    box-sizing: border-box;
-    border: 1px solid #999;
-    border-radius: 5px;
-  }
-  
+input,
+textarea {
+  font: 1em sans-serif;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
 
-  
-  textarea {
-    vertical-align: top;
-    padding: 10px;
-    height: 5em;
-  }
+textarea {
+  vertical-align: top;
+  padding: 10px;
+  height: 5em;
+}
 
 #connexion {
-    width: 100px;
-    padding: 15px;
-    margin-top: 20px;
-    color: #fff;
-    background-color: #901C1C;
-    border-radius: 5px;
+  width: 100px;
+  padding: 15px;
+  margin-top: 20px;
+  color: #fff;
+  background-color: #901c1c;
+  border-radius: 5px;
 }
 
 .modal-body p {
-    font-size: 40px;
+  font-size: 40px;
 }

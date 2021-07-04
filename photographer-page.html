@@ -5,6 +5,7 @@
     <title>photographer-page</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style2.css" />
     <link rel="stylesheet" href="modale.css" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,21 +24,8 @@
     <main>
       <section id="photographe">
         
-        
       </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
+      <!--Conteneur de la modale du formulaire-->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
@@ -104,19 +92,9 @@
         </div>
 
         </div>
-        
-
-
-
-
-
-
-
-
-
-
-
+      <!--Section qui contient le conteneur de l'ensemble des images d'un photograohe-->
       <section id="photographerProfil">
+        <!--Menu déroulant Tri par-->
         <div id="divMenuDeroulant">
           <h4 id="trierPar">Trier par</h4>
           <select id="menuDeroulant" aria-label="Filtre de tri">
@@ -127,30 +105,25 @@
         </div>
         
       </section>
-
+      <!--Conteneur du diapo-->
       <section id="diapo">
         <button id="close">X</button>
         <div class="elementActive">
-          <button id="prev"> < </button>
+          <button id="prev">‹</button>
             <img src="" alt="" id="imgDiapo">
             <video src="" id="vidDiapo"></video>
-            
-          <button id="next"> > </button>
+          <button id="next"> › </button>
           
-      </div><p id="diapoDesc"></p>
-  
+        </div><p id="diapoDesc"></p>
       </section>
-      
+      <!--Conetneur des likes et prix-->
       <section id="LikesPrix">
         <div id="sommeLikes"  >
         </div>
 
         <div id="prix"  >
         </div>
-      </section>
-      
-
-      
+      </section>      
       
     </main>
     <footer>
@@ -161,7 +134,5 @@
     <script src="photographer-profil.js"></script>
     <script src="formulaire.js"></script>
     
-
-
   </body>
 </html>

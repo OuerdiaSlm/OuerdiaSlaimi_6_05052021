@@ -3,19 +3,22 @@ function attribution(parent, enfant, data) {
   enfant.textContent = data;
 }
 // function diapoConditions
-function diapoConditions(photographeData,data,imgDiaporama,vidDiaporama,diapoDesc,x) {
+function diapoConditions(
+  photographeData,
+  data,
+  imgDiaporama,
+  vidDiaporama,
+  diapoDesc,
+  x
+) {
   if (data[x].type == "image") {
-    console.log("ok");
     imgDiaporama.style.display = "inline";
     vidDiaporama.style.display = "none";
     imgDiaporama.src = "Sample Photos/" + photographeData + "/" + data[x].src;
     diapoDesc.textContent = data[x].description;
-
-    //vidDiaporama.src="";
   } else {
     vidDiaporama.src = "Sample Photos/" + photographeData + "/" + data[x].src;
     diapoDesc.textContent = data[x].description;
-    //imgDiaporama.src="";
     vidDiaporama.style.display = "block";
     imgDiaporama.style.display = "none";
     vidDiaporama.type = "video/mp4";
@@ -39,21 +42,33 @@ function diapo(data, i, photographeData) {
 
   let diapoDesc = document.getElementById("diapoDesc");
   diapoDesc.textContent = data[i].description;
-  console.log(data[i].description);
 
   // button next et prev
   let x = i;
   next.addEventListener("click", function () {
     if (x < data.length) {
       x = x + 1;
-      diapoConditions(photographeData,data,imgDiaporama,vidDiaporama,diapoDesc,x);
+      diapoConditions(
+        photographeData,
+        data,
+        imgDiaporama,
+        vidDiaporama,
+        diapoDesc,
+        x
+      );
     }
   });
 
   prev.addEventListener("click", function () {
     if (x > 0) {
       x = x - 1;
-      diapoConditions(photographeData,data,imgDiaporama,vidDiaporama,diapoDesc,x
+      diapoConditions(
+        photographeData,
+        data,
+        imgDiaporama,
+        vidDiaporama,
+        diapoDesc,
+        x
       );
     }
   });
@@ -63,34 +78,67 @@ function diapo(data, i, photographeData) {
     if (event.key == "ArrowRight" || event.key == "Right") {
       if (x < data.length) {
         x = x + 1;
-        diapoConditions(photographeData,data,imgDiaporama,vidDiaporama,diapoDesc,x);
+        diapoConditions(
+          photographeData,
+          data,
+          imgDiaporama,
+          vidDiaporama,
+          diapoDesc,
+          x
+        );
       }
     } else if (event.key == "ArrowLeft" || event.key == "Left") {
       if (x > 0) {
         x = x - 1;
-        diapoConditions(photographeData,data,imgDiaporama,vidDiaporama,diapoDesc,x);
+        diapoConditions(
+          photographeData,
+          data,
+          imgDiaporama,
+          vidDiaporama,
+          diapoDesc,
+          x
+        );
       }
     }
   });
 }
 
 // function likeClick
-function likesClick(coeur, like){
-  for(j=0;j<coeur.length;j++){
-      let x=j;
-      let b=0;
-      console.log(like.length);
-      coeur[j].addEventListener("click",function(){
-          console.log(b)
-          if (b===0){ 
-              like[x].textContent=parseInt(like[x].textContent)+1;
-              b=1;
-      
-              }
-              else if (b===1){ 
-              like[x].textContent=parseInt(like[x].textContent)-1;
-              b=0;
-              }
-          })
+function likesClick(coeur, like) {
+  for (j = 0; j < coeur.length; j++) {
+    let x = j;
+    let b = 0;
+    coeur[j].addEventListener("click", function () {
+      if (b === 0) {
+        like[x].textContent = parseInt(like[x].textContent) + 1;
+        b = 1;
+      } else if (b === 1) {
+        like[x].textContent = parseInt(like[x].textContent) - 1;
+        b = 0;
       }
+    });
+  }
+}
+
+//Function qui fait réapparaître le conteneur des likes et prix
+function containLikesPrix(){
+  let LikesPrix = document.getElementById("LikesPrix");
+  LikesPrix.style.opacity = "1";
+}
+
+// Afficher tableau trié 
+function afficheTab(tabAfficheHtml,creaDiv,infoPhotographe){
+  for (let l = 0; l < tabAfficheHtml.length; l++) {
+    let mediaUse2 = new MediaFactory(
+      tabAfficheHtml[l].type,
+      tabAfficheHtml[l].src,
+      infoPhotographe[0].name,
+      creaDiv,
+      tabAfficheHtml[l].description,
+      tabAfficheHtml[l].likes
+    ).detecte();
+    mediaUse2.addEventListener("click", function () {
+      diapo(tabAfficheHtml, l, infoPhotographe[0].name);
+    });
+  }
 }

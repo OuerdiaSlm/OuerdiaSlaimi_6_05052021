@@ -1,0 +1,184 @@
+@media screen and (min-width: 1000px) and (max-width: 1230px) {
+  #imageProfile2 {
+    margin-left: 100px;
+  }
+}
+@media screen and (min-width: 780px) and (max-width: 1000px) {
+  .top {
+    display: none;
+  }
+
+  #imageProfile2 {
+    margin-left: 0px;
+  }
+  .logo {
+    width: 230px;
+    height: auto;
+    padding: 0px;
+    padding-top: 10px;
+    margin-left: -28px;
+  }
+
+  .navbar-photographe {
+    order: 2;
+    left: 100%;
+    top: 10px;
+    font-size: 13px;
+    padding-left: 0px;
+    padding: 0px;
+    margin-right: 30px;
+  }
+
+  .header_navbar {
+    display: flex;
+    justify-content: space-between;
+  }
+  .main-navbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 15px;
+  }
+  .main-navbar a {
+    margin: 2px;
+  }
+
+  .main-navbar {
+    order: 3;
+  }
+
+  .classFigure {
+    margin: 0px;
+  }
+
+  div img:not(.logo) {
+    margin: 0px;
+    width: 335px;
+    height: 190px;
+  }
+  div video {
+    margin: 0px;
+    width: 335px;
+    height: 190px;
+  }
+
+  #idDivP {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 780px) {
+  /*2eme page*/
+  #photographe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  #figureImgP2 {
+    width: auto;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    background-color: #ffff;
+  }
+  #imageProfile2 img {
+    /* padding: 27px; */
+    width: 105px;
+    height: 105px;
+    padding: 0px;
+    margin: 10px;
+    margin-left: -25px;
+    margin-top: -15px;
+  }
+
+  #imageProfile2 {
+    margin-left: 0px;
+  }
+
+  #modal-btn {
+    width: 170px;
+    height: 35px;
+    border-radius: 2px;
+    padding: 1%;
+    position: fixed;
+    bottom: 20px;
+    margin: 0 auto;
+    right: 50px;
+    left: 50px;
+  }
+  #idInfosP2 {
+    text-align: left;
+    padding: 10px;
+  }
+
+  #idInfosP2 h1:not(.navbar-photographe) {
+    font-size: 36px;
+  }
+  #idInfosP2 h2 {
+    font-size: 13px;
+  }
+  #idInfosP2 p {
+    font-size: 13px;
+    color: #757575;
+  }
+  .classDivTags {
+    margin-left: -5px;
+  }
+  #idInfosP2 h3 {
+    font-size: 13px;
+    margin: 3px;
+    padding: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+
+  #imageProfile {
+    width: 154px;
+    height: 154px;
+    margin: 5px;
+  }
+
+  #divMenuDeroulant {
+    display: none;
+  }
+  #LikesPrix {
+    display: none;
+  }
+
+  div img:not(.logo) {
+    margin: 0px;
+    max-width: 335px;
+    height: 190px;
+  }
+  div video {
+    margin: 0px;
+    width: 335px;
+    height: 190px;
+  }
+  #idDivP {
+    margin: 0px;
+  }
+  #idDivP p {
+    font-size: 14px;
+  }
+  .classCoeur {
+    font-size: 14px;
+    margin: 5px;
+    margin-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  #imageProfile2 img {
+    position: absolute;
+    top: 0px;
+    padding: 5px;
+    margin: 5px;
+    margin-right: 0px;
+    right: -0.5px;
+  }
+}
