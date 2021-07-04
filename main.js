@@ -1,3 +1,6 @@
+
+
+
 // Récupération du fichier JSON avec fetch
 fetch("JsonFile.json")
   .then((response) => response.json())
@@ -87,3 +90,14 @@ fetch("JsonFile.json")
       });
     }
   });
+
+  let topHead=document.getElementById("top");
+
+window.addEventListener("scroll",function(){
+  if(window.scrollY>130){
+    console.log("ok");
+    topHead.style.display="block"
+  }else{
+    topHead.style.display="none"
+  }
+})

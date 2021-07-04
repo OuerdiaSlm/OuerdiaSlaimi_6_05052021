@@ -15,6 +15,8 @@ let carte1 = new CartePhotographeFactory(
 );
 carte1.html();
 
+
+
 //Création du id
 let imageP2 = document.querySelector("figure > div");
 imageP2.id = "imageProfile2";

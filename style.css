@@ -8,23 +8,38 @@ body {
   font-family: DM Sans;
 }
 
-.top {
-  margin: auto;
-  width: 300px;
-  border-radius: 10px;
+#centreTop{
+  width:89%;
+  height:50px;
+  display:flex;
+  justify-content:center;
+}
+#top {
+  display:none;
+  width: 182px;
+  height: 30px;
+  border-radius: 5px;
   padding: 5px;
   margin-top: 10px;
   margin-bottom: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d3573c;
+  background-color: #DB8876;
+  position: fixed;
+  
+  
+}
+
+#centreTop a{
+  text-decoration: none;
+  color:black;
+}
+.h1Contenu {
+  font-size: 18px;
 }
 
 .header_navbar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: space-around;
   align-items: center;
   color: #901c1c;
 }
@@ -33,6 +48,7 @@ body {
   width: 340px;
   height: auto;
   padding: 20px;
+  padding-right: 50px;
 }
 
 .main-navbar a {
@@ -41,12 +57,16 @@ body {
   border: solid 0.5px #c4c4c4;
   border-radius: 25px;
   padding: 4px;
-  margin: 10px;
+}
+
+.main-navbar a:hover ,.main-navbar a:focus{
+  background-color: #901C1C;
+  color: #fafafa;
 }
 
 .navbar-photographe {
   padding: 20px;
-  padding-left: 100px;
+  padding-left: 50px;
   font-size: 35px;
   font-weight: normal;
 }
@@ -152,14 +172,16 @@ h3 {
   font-size: 24px;
   color: #901c1c;
   display: inline;
-  margin-bottom: 3px;
+  margin-bottom: 25px;
 }
 
 #idInfosP2 p {
+  color: #525252;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
-  margin-bottom: 3px;
+  margin-bottom: 25px;
+  margin-top: 20px;
 }
 
 #idInfosP2 h5 {
@@ -279,7 +301,12 @@ video {
   margin-bottom: 10%;
   text-align: center;
   font-size: 19px;
+  border-radius: 5px;
 }
+#modal-btn:hover, #menuDeroulant:hover{
+  background-color: #db8876;
+  color: black;
+} 
 
 /*Menu deroulant */
 
@@ -301,12 +328,16 @@ video {
   color: white;
   font-size: 18px;
   border-radius: 2px;
-  padding: 10px;
+  padding: 15px;
   margin-left: 15px;
+  border-radius: 5px;
+  border: 0px;
 }
+
 
 .menuOption {
   border-bottom: white;
+  padding: 20px;
 }
 
 #idCreaDiv {
@@ -373,7 +404,7 @@ video {
 }
 
 @media screen and (min-width: 0px) and (max-width: 1000px) {
-  .top {
+  #top {
     display: none;
   }
 
