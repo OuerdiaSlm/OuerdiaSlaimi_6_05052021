@@ -24,8 +24,6 @@ body {
   margin-bottom: 25px;
   background-color: #DB8876;
   position: fixed;
-  
-  
 }
 
 #centreTop a{
@@ -39,8 +37,11 @@ body {
 .header_navbar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
+  color: #901c1c;
+}
+.header_navbar2 {
   color: #901c1c;
 }
 
@@ -295,9 +296,10 @@ video {
 #modal-btn {
   order: 2;
   width: 170px;
+  height: 69px;
   color: white;
   background-color: #901c1c;
-  padding: 15px;
+  padding-top: 20px;
   margin-bottom: 10%;
   text-align: center;
   font-size: 19px;

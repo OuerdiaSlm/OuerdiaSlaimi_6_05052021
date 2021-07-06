@@ -15,8 +15,6 @@ let carte1 = new CartePhotographeFactory(
 );
 carte1.html();
 
-
-
 //Création du id
 let imageP2 = document.querySelector("figure > div");
 imageP2.id = "imageProfile2";
@@ -37,6 +35,13 @@ buttonContact.tabIndex = 0;
 buttonContact.id = "modal-btn";
 buttonContact.class = "modal-btn";
 buttonContact.textContent = "Contactez-moi";
+
+//Navigation au clavier
+buttonContact.addEventListener('keydown', function(e){
+  if(e.keyCode==13){
+    launchModal();
+  }
+});
 
 // Fermeture de la modal............................
 let close = document.getElementById("close");
@@ -60,6 +65,9 @@ window.addEventListener("keydown", function (eventEscape) {
     containLikesPrix();
   }
 });
+
+
+
 //....
 
 //creation de div ou mettre toutes les images du photographe avec leurs description et likes 
@@ -84,6 +92,12 @@ for (let i = 0; i < photographeData.length; i++) {
     document.getElementById("LikesPrix").style.opacity = "0";
 
     diapo(photographeData, i, infoPhotographe[0].name);
+  });
+
+  mediaUse.addEventListener('keydown', function(e){
+    if(e.keyCode==13){
+      diapo(photographeData, i, infoPhotographe[0].name);
+    }
   });
 }
 //....................MENU TRIER PAR...................
@@ -165,6 +179,7 @@ selectMenu.onchange = (event) => {
       }
     }
     //Affiche tableau trié (les cartes image trié)
+    
     afficheTab(tabAfficheHtml,creaDiv,infoPhotographe);
 
     //function likeClick
@@ -222,3 +237,13 @@ document.getElementById("prix").textContent =
 //......................................................
 const formName = document.getElementById("formName");
 formName.textContent = infoPhotographe[0].name;
+
+//MediaIndex
+let indexMedia=document.getElementsByClassName("classImgVid");
+for(let i=0; i<indexMedia.length; i++){
+  indexMedia[i].addEventListener('keydown', function(e){
+  if(e.keyCode==13){
+    diapo(data, i, photographeData);
+  }
+})
+}

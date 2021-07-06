@@ -140,5 +140,10 @@ function afficheTab(tabAfficheHtml,creaDiv,infoPhotographe){
     mediaUse2.addEventListener("click", function () {
       diapo(tabAfficheHtml, l, infoPhotographe[0].name);
     });
+    mediaUse2.addEventListener('keydown', function(e){
+      if(e.keyCode==13){
+        diapo(tabAfficheHtml, l, infoPhotographe[0].name);
+      }
+    })
   }
 }

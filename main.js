@@ -23,10 +23,11 @@ fetch("JsonFile.json")
       let lien = document.getElementById(data.photographers[i].id);
       
       lien.addEventListener("click", function () {
+        //tab contiendra les images
         let tab = [];
         console.log(carte);
         console.log(tab);
-        // Boucle parcour des images des photographes
+        // Boucle parcour des images des photographesju
         for (let j = 0; j < data.media.length; j++) {
           if (data.media[j].photographerId == data.photographers[i].id) {
             if (data.media[j].image) {
@@ -50,15 +51,17 @@ fetch("JsonFile.json")
             }
           }
         }
+
+        //tabInfo contient les information du photographe
         let tabInfo = [];
         tabInfo.push(carte);
+
         //.........Envoie dans le local storage (deuxieme page).........
         localStorage.setItem("photographe", JSON.stringify(tab));
         localStorage.setItem("infoPhotographe", JSON.stringify(tabInfo));
       });
     }
     //FILTRES
-    //  Recuperation des filtres dans le html avec la class
     let filtre = document.getElementsByClassName("filtre");
     let figure = document.querySelectorAll(
       " .classFigure > .classDivInfos > div "

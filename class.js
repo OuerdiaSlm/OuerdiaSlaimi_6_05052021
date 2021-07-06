@@ -127,6 +127,7 @@ class ImageFactory {
     imagePhotographe.setAttribute("alt", this.name + " " + this.description);
     divCarteImg.appendChild(imagePhotographe);
     imagePhotographe.src = "Sample Photos/" + this.name + "/" + this.src;
+    imagePhotographe.setAttribute("class", "classImgVid");
     imagePhotographe.tabIndex = 0;
 
     const divP = document.createElement("div");
@@ -175,6 +176,8 @@ class VideoFactory {
     let sourcePhotographe = document.createElement("source");
     divCarteVideo.appendChild(videoPhotographe);
     videoPhotographe.appendChild(sourcePhotographe);
+    videoPhotographe.setAttribute("class", "classImgVid");
+    videoPhotographe.tabIndex = 0;
 
     sourcePhotographe.src = "Sample Photos/" + this.name + "/" + this.src;
     sourcePhotographe.type = "video/mp4";
